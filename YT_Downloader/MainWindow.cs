@@ -34,6 +34,11 @@ namespace YT_Downloader
         public MainWindow()
         {
             InitializeComponent();
+            if (ControlsService.CheckForInternetConnection() == false)
+            {
+                MessageBox.Show("Internet connection is necessary to run this application!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.Close();                
+            }
             ControlsService.MaterialSkinInitialization(this);
             ControlsService.ChangeHeaderColors(downloadHistoryDGV);
         }
